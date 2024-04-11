@@ -1,17 +1,13 @@
-import { StatusBar, StyleSheet } from 'react-native';
+import { StatusBar, StyleSheet } from "react-native";
 
-import EditScreenInfo from '@/components/EditScreenInfo';
-import { Text, View } from '@/components/Themed';
+import EditScreenInfo from "@/components/EditScreenInfo";
+import { Text, View } from "@/components/Themed";
+import Home from "@/components/home";
 
 export default function TabOneScreen() {
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>Tab One</Text>
-      <View
-        style={styles.separator}
-        lightColor="#eee"
-        darkColor="rgba(255,255,255,1)"
-      />
+      <Home />
       <StatusBar barStyle="dark-content" backgroundColor="white" />
       <EditScreenInfo path="app/(tabs)/index.tsx" />
     </View>
@@ -20,20 +16,6 @@ export default function TabOneScreen() {
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
-    alignItems: "center",
-    justifyContent: "center",
-    backgroundColor: "blue",
-  },
-  title: {
-    fontSize: 20,
-    fontWeight: "bold",
-
-    color: "black",
-  },
-  separator: {
-    marginVertical: 30,
-    height: 1,
-    width: "80%",
+    alignItems: "flex-start",
   },
 });
