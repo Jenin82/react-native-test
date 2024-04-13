@@ -10,7 +10,8 @@ import * as SplashScreen from "expo-splash-screen";
 import { useEffect } from "react";
 
 import { useColorScheme } from "@/components/useColorScheme";
-
+import Getstart from "./getstart";
+import React from "react";
 
 export {
   // Catch any errors thrown by the Layout component.
@@ -50,9 +51,12 @@ function RootLayoutNav() {
 
   return (
     <ThemeProvider value={DarkTheme}>
-   
-      <Stack >
-        <Stack.Screen name="getstart" />
+      <Stack>
+        <Stack.Screen
+          name="getstart"
+     
+          options={{ headerShown: false }} 
+        />
       </Stack>
     </ThemeProvider>
   );
