@@ -9,9 +9,7 @@ import {
 } from "react-native";
 import bg from "../assets/screenBg/getstarted.png";
 
-
-
-export default function Getstart() {
+export default function HomeScreen(){
   return (
     <ImageBackground source={bg} style={styles.Wrapper} resizeMode="cover">
       <SafeAreaView style={styles.safeArea}>
@@ -19,14 +17,12 @@ export default function Getstart() {
           Welcome to a world of relaxation and flavour exploration.
         </Text>
         <Link href={"/signup"} style={styles.btn}>
-          Let’s Get Started
+          reached home
         </Link>
       </SafeAreaView>
     </ImageBackground>
   );
-};
-
-
+}
 
 const styles = StyleSheet.create({
   Wrapper: {
@@ -42,12 +38,12 @@ const styles = StyleSheet.create({
     justifyContent: "flex-end",
     padding: 30,
     paddingBottom: 80,
-    gap:40
+    gap: 40,
   },
   textclor: {
     color: "white",
-    fontSize:25,
-    fontWeight:"500"
+    fontSize: 25,
+    fontWeight: "500",
   },
   btn: {
     backgroundColor: "#1976D2",

@@ -2,23 +2,21 @@ import FontAwesome from "@expo/vector-icons/FontAwesome";
 import {
   DarkTheme,
   DefaultTheme,
+  NavigationContainer,
   ThemeProvider,
 } from "@react-navigation/native";
 import { useFonts } from "expo-font";
-import { Link, Stack, router } from "expo-router";
 import * as SplashScreen from "expo-splash-screen";
-import { useEffect } from "react";
+import React, { useEffect } from "react";
+import { createStackNavigator } from "@react-navigation/stack";
 
-import { useColorScheme } from "@/components/useColorScheme";
+import "react-native-gesture-handler";
+export { ErrorBoundary } from "expo-router";
+
 import Getstart from "./getstart";
-import React from "react";
+import SignUp from "./signup";
+import HomeScreen from "./home";
 
-export {
-  // Catch any errors thrown by the Layout component.
-  ErrorBoundary,
-} from "expo-router";
-
-// Prevent the splash screen from auto-hiding before asset loading is complete.
 SplashScreen.preventAutoHideAsync();
 
 export default function RootLayout() {
@@ -27,37 +25,27 @@ export default function RootLayout() {
     ...FontAwesome.font,
   });
 
-  // Expo Router uses Error Boundaries to catch errors in the navigation tree.
-  useEffect(() => {
-    if (error) throw error;
-  }, [error]);
-
   useEffect(() => {
     if (loaded) {
       SplashScreen.hideAsync();
-      router.replace("/getstart");
     }
   }, [loaded]);
 
   if (!loaded) {
     return null;
   }
-
-  return <RootLayoutNav />;
-}
-
-function RootLayoutNav() {
-  const colorScheme = useColorScheme();
+  const Stack = createStackNavigator();
 
   return (
     <ThemeProvider value={DarkTheme}>
-      <Stack>
-        <Stack.Screen
-          name="getstart"
-     
-          options={{ headerShown: false }} 
-        />
-      </Stack>
+      <Stack.Navigator
+        initialRouteName="getstart"
+        screenOptions={{ headerShown: false }}
+      >
+        <Stack.Screen name="getstart" component={Getstart} />
+        <Stack.Screen name="signup" component={SignUp} />
+        <Stack.Screen name="home" component={HomeScreen} />
+      </Stack.Navigator>
     </ThemeProvider>
   );
 }
